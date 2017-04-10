@@ -1,11 +1,12 @@
 import firebase from 'firebase';
 
 const config = {
-  apiKey: 'AIzaSyAhWMYWhBG2UvsNMZ-qVLbaqVZ5aTzwsNU',
-  authDomain: 'hot-takes.firebaseapp.com',
-  databaseURL: 'https://hot-takes.firebaseio.com',
-  storageBucket: 'hot-takes.appspot.com',
-  messagingSenderId: '823384132241'
+  apiKey: "AIzaSyCLysLvxCNE7lJkPIe6iRKxVF1V33bYQwc",
+  authDomain: "pepper-554a4.firebaseapp.com",
+  databaseURL: "https://pepper-554a4.firebaseio.com",
+  projectId: "pepper-554a4",
+  storageBucket: "pepper-554a4.appspot.com",
+  messagingSenderId: "746210783035"
 };
 
 firebase.initializeApp(config);

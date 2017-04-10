@@ -2,7 +2,9 @@ import {
   auth,
   googleAuthProvider
 } from '../firebase';
-import {addUser} from './users';
+import pick from 'lodash/pick';
+import {database} from '../firebase';
+const usersRef = database.ref('/users');
 
 export const signIn = () => {
   return (dispatch) => { // redux knows to input dispatch
@@ -43,7 +45,7 @@ export const startListeningToAuthChanges = () => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         dispatch(signedIn(user));
-        dispatch(addUser(user));
+        usersRef.child(user.uid).set(pick(user, ['displayName', 'photoURL', 'email', 'uid']));
       } else {
         dispatch(signedOut());
       }
