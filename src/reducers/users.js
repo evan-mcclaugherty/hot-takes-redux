@@ -1,6 +1,6 @@
 import initialState from '../initial-state';
 import extend from 'lodash/extend';
-import clone from 'lodash/clone'
+import clone from 'lodash/clone';
 
 export default function usersReducer(state = initialState.users, action) {
   switch(action.type) {

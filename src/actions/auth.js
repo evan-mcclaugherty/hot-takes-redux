@@ -2,6 +2,7 @@ import {
   auth,
   googleAuthProvider
 } from '../firebase';
+import {addUser} from './users';
 
 export const signIn = () => {
   return (dispatch) => { // redux knows to input dispatch
@@ -11,6 +12,7 @@ export const signIn = () => {
     auth.signInWithPopup(googleAuthProvider).then(
       ({user}) => {
         dispatch(signedIn(user));
+        dispatch(addUser(user));
       });
   };
 };
@@ -18,11 +20,11 @@ export const signIn = () => {
 export const signOut = () => {
   return (dispatch) => {
     dispatch({
-      type: 'ATTEMPTING_SIGNIN'
+      type: 'ATTEMPTING_LOGIN'
     });
-    setTimeout(() => {
-      dispatch(signedOut());
-    }, 2000);
+      auth.signOut().then(() => {
+         dispatch(signedOut());
+      });
   };
 };
 
